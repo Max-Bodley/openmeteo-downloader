@@ -1,0 +1,15 @@
+volumes:
+  open-meteo-data:
+
+services:
+  open-meteo:
+    image: ghcr.io/open-meteo/open-meteo
+    container_name: open-meteo
+    volumes:
+      - open-meteo-data:/app/data
+    environment:
+      REMOTE_DATA_DIRECTORY: https://openmeteo.s3.amazonaws.com/data/
+      CACHE_SIZE: 8GB # Can change cache size
+    ports:
+      - '127.0.0.1:6000:8080' #Open-Meteo container exposes port 8080
+    restart: always

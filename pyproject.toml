@@ -1,0 +1,38 @@
+[project]
+name = "openmeteo-downloader"
+version = "0.1.0"
+description = "Fast ERA5 weather downloads from a local Open-Meteo server"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "numpy>=2.5.2",
+    "openmeteo-requests>=1.7.5",
+    "pandas>=3.0.5",
+    "requests>=2.34.2",
+]
+
+[project.scripts]
+openmeteo-downloader = "openmeteo_downloader.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "requests-cache>=1.3.3",
+    "retry-requests>=2.0.0",
+]
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+openmeteo_downloader = ["templates/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

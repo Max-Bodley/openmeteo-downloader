@@ -1,0 +1,18 @@
+# Local Open-Meteo server. Start with:  docker compose up -d
+# Weather data is streamed on demand from Open-Meteo's public S3 bucket and
+# cached in the "open-meteo-data" volume, so no bulk download is needed.
+volumes:
+  open-meteo-data:
+
+services:
+  open-meteo:
+    image: ghcr.io/open-meteo/open-meteo
+    container_name: open-meteo
+    volumes:
+      - open-meteo-data:/app/data
+    environment:
+      REMOTE_DATA_DIRECTORY: https://openmeteo.s3.amazonaws.com/data/
+      CACHE_SIZE: 8GB # cache for data pulled from S3; adjust to taste
+    ports:
+      - '127.0.0.1:6000:8080' # container listens on 8080; exposed locally on 6000
+    restart: always

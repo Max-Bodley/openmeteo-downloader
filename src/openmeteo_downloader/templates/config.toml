@@ -1,0 +1,31 @@
+# openmeteo-downloader job file.
+# Edit it, then run:   openmeteo-downloader run config.toml
+# Relative paths are resolved from this file's folder.
+
+# ---- Output -------------------------------------------------------------
+output_dir = "output"          # folder for the CSVs (created if missing)
+name       = "era5"            # file name prefix, e.g. era5_long.csv
+formats    = ["wide", "long"]  # wide = one column per site + All_Sites_Avg
+
+# ---- What & when --------------------------------------------------------
+start     = "1980-01-01"       # YYYY-MM-DD
+end       = "2025-12-31"       # YYYY-MM-DD, inclusive; omit for latest available
+variables = ["temperature_2m"] # any Open-Meteo hourly variable, e.g. "dew_point_2m",
+                               # "relative_humidity_2m", "wind_speed_10m", "shortwave_radiation"
+                               # https://open-meteo.com/en/docs/historical-weather-api
+
+# ---- Options (defaults shown) -------------------------------------------
+temperature_unit     = "fahrenheit"  # or "celsius"
+timezone             = "UTC"         # or e.g. "America/Chicago"
+model                = "era5"        # or "era5_land" (finer 0.1 deg grid, 1950+)
+elevation_correction = false         # false = raw ERA5 grid cell, same as Copernicus
+server               = "http://127.0.0.1:6000"
+
+# ---- Where --------------------------------------------------------------
+# Either point at a CSV with name, lat, lon columns...
+# points_file = "sites.csv"
+
+# ...or list sites here:  "Label" = [latitude, longitude]
+[points]
+"Cedar Rapids, IA" = [41.9779, -91.6656]
+"Des Moines, IA"   = [41.5868, -93.6250]
