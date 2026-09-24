@@ -29,8 +29,8 @@ OUTPUT_NAME = "era5"
 
 # Points to Extract
 POINTS = {
-    # "Cedar Rapids, IA": (44.11, -95.22),
-    "Des Moines, IA": (48.17, -81.12),
+    "Cedar Rapids, IA": (41.9779, -91.6656),
+    "Des Moines, IA": (41.5868, -93.6250),
 }
 
 START_DATE = "1980-01-01"                      # YYYY-MM-DD
