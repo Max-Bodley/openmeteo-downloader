@@ -24,13 +24,13 @@ from openmeteo_downloader import fetch_era5
 
 # ============================== CONFIG ==============================
 # Where to save files. Use a raw string or forward slashes on Windows.
-OUTPUT_DIR = r"T:\Python Tools\Load Analysis Programs\Test Pull"        # <-- set folder here
+OUTPUT_DIR = r"output" # <- can change this to your T:\ drive
 OUTPUT_NAME = "era5"
 
 # Points to Extract
 POINTS = {
-    "Cedar Rapids, IA": (41.9779, -91.6656),
-    "Des Moines, IA": (41.5868, -93.6250),
+    # "Cedar Rapids, IA": (44.11, -95.22),
+    "Des Moines, IA": (48.17, -81.12),
 }
 
 START_DATE = "1980-01-01"                      # YYYY-MM-DD
